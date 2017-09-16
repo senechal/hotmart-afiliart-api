@@ -1,4 +1,4 @@
-# Utilizando sintaxe da versão 2:
+# Utilizando sintaxe da versão 2.2:
 version: '2.2'
 services:
      hotmart:
@@ -16,4 +16,7 @@ services:
          container_name: hotmart-app
      mongo:
         image: mongo:latest
+        build:
+          context: .
+          network: host
         container_name: hotmart-db
