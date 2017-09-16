@@ -1,0 +1,19 @@
+# Utilizando sintaxe da versão 2:
+version: '2.2'
+services:
+     hotmart:
+         build:
+             context: .
+             dockerfile: Dockerfile
+         depends_on:
+         - mongo
+         ports:
+         - 3000:3000
+         links:
+         - mongo:database
+         environment:
+           DB_HOST: "mongodb://database:27017/hotmart"
+         container_name: hotmart-app
+     mongo:
+        image: mongo:latest
+        container_name: hotmart-db
