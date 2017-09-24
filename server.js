@@ -20,5 +20,7 @@ import routes from './api/routes';
     app.listen(port, host);
 
     console.log(`API server started on: ${port}`);
+  }).catch((err) => {
+    console.error(err);
   });
 }());
