@@ -15,5 +15,5 @@ services:
            DB_HOST: "mongodb://database:27017/hotmart"
          container_name: hotmart-app
      mongo:
-        image: mongo:latest
+        image: mongo:3.4
         container_name: hotmart-db
