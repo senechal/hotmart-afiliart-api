@@ -3,6 +3,7 @@ import Product from './models';
 export const productsPOST = (req, res) => {
   const rawObject = req.body || JSON.parse(req.bodyAsString);
   const product = new Product(Object.assign(rawObject, { requested: false }));
+  console.log(JSON.stringify(rawObject));
   product.save();
   return res.json({ message: 'OK' });
 };
