@@ -1,11 +1,14 @@
 import Product from './models';
+import token from './token';
 
 export const productsPOST = (req, res) => {
   const rawObject = req.body || JSON.parse(req.bodyAsString);
-  const product = new Product(Object.assign(rawObject, { requested: false }));
-  console.log(JSON.stringify(rawObject));
-  product.save();
-  return res.json({ message: 'OK' });
+  if (token === rawObject.hottok) {
+    const product = new Product(Object.assign(rawObject, { requested: false }));
+    product.save();
+    return res.json({ message: 'OK' });
+  }
+  return res.json({ message: 'ERROR, WRONG TOKEN' });
 };
 
 export const productsGET = (req, res) => {
