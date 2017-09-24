@@ -8,14 +8,14 @@ export const productsPOST = (req, res) => {
     product.save();
     return res.json({ message: 'OK' });
   }
-  return res.json({ message: 'ERROR, WRONG TOKEN' });
+  return res.status(403).send({ message: 'WRONG TOKEN' });
 };
 
 export const productsGET = (req, res) => {
   const query = Product.find({ requested: false });
   query.exec((err, products) => {
     if (err) {
-      return res.json({ message: 'ERROR' });
+      return res.status(500).send({ message: 'ERROR' });
     }
     products.forEach((item) => {
       const product = item;
