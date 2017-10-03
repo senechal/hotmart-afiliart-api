@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 const ProductsSchema = new mongoose.Schema({
   requested: Boolean,
-  hottok: String,*
+  hottok: String,
   prod: String,
   prod_name: String,
   off: String,
