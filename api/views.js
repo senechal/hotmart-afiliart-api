@@ -12,16 +12,19 @@ export const productsPOST = (req, res) => {
 };
 
 export const productsGET = (req, res) => {
+  const { debug } = req.query;
   const query = Product.find({ requested: false });
   query.exec((err, products) => {
     if (err) {
       return res.status(500).send({ message: 'ERROR' });
     }
-    products.forEach((item) => {
-      const product = item;
-      product.requested = true;
-      product.save();
-    });
+    if (!debug) {
+      products.forEach((item) => {
+        const product = item;
+        product.requested = true;
+        product.save();
+      });
+    }
     return res.json(products);
   });
 };
